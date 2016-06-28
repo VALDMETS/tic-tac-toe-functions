@@ -12,6 +12,18 @@
  */
 function validateGameType(gameTypeString) {
 
+	if(typeof gameTypeString === 'number' || typeof gameTypeString === 'object') {
+		return false;
+	}
+	gameTypeString = gameTypeString.toLowerCase();
+	if(gameTypeString === '1' || gameTypeString === 'one') {
+		return 1;
+	} else 	if(gameTypeString === '2' || gameTypeString === 'two') {
+			return 2;
+		} else {
+			return false;
+		}
+
 }
 
 /*
@@ -20,14 +32,40 @@ function validateGameType(gameTypeString) {
  * false if the name is not valid.
  */
 function validateName(name) {
-
+	if(name.length<1 || typeof name === 'number' || typeof name === 'object') {
+		return false;
+	} else {
+		return name;
+	}
 }
 
 /*
  * Randomly generates and returns a name for a computer player.
  */
 function generateComputerName() {
-
+		var namer = Math.random()*10;
+		namer = Math.floor(namer);
+		if (namer===0) {
+			return 'Scooter';
+		} else if (namer===1) {
+			return 'Blipper';
+		} else if (namer===2) {
+			return 'Cholgis';
+		} else if (namer===3) {
+			return 'Finnegan';
+		} else if (namer===4) {
+			return 'Tingle';
+		} else if (namer===5) {
+			return 'Shop Class';
+		} else if (namer===6) {
+			return 'Qualala';
+		} else if (namer===7) {
+			return 'Doberboy';
+		} else if (namer===8) {
+			return 'Printeaux';
+		} else {
+			return 'Jugganaut';
+		}
 }
 
 /*
@@ -38,7 +76,14 @@ function generateComputerName() {
  * insensitive, so it should accept both 'Y' and 'y' for example.
  */
 function validateYesNo(yesNoString) {
-
+		var ans = yesNoString.toLowerCase();
+		if (ans==='y' || ans==='yes') {
+			return true;
+		} else if (ans==='n' || ans==='no') {
+			return false;
+		} else {
+			return null;
+		}
 }
 
 /*
@@ -47,7 +92,11 @@ function validateYesNo(yesNoString) {
  * 'O' and vice versa.
  */
 function getNextPlayer(currentPlayer) {
-
+		if (currentPlayer==='X') {
+			return 'O';
+		} else if (currentPlayer==='O') {
+			return 'X';
+		}
 }
 
 /*
@@ -69,7 +118,8 @@ function getNextPlayer(currentPlayer) {
  *   ~~~~~~~~~~~~~
  */
 function getGameBoardString(gameBoard) {
-
+		gameBoard = [' ','X',' ',' ',' ',' ',' ',' ',' '];
+		return gameBoard;
 }
 
 /*
